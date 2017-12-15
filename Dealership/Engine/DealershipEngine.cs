@@ -4,6 +4,7 @@ using Dealership.Contracts;
 using Dealership.Factories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -189,6 +190,11 @@ namespace Dealership.Engine
 
                     return this.ShowUserVehicles(username);
 
+                case "VeryImportant":
+                    this.VeryImportant();
+
+                    return "Trololo";
+
                 default:
                     return string.Format(InvalidCommand, command.Name);
             }
@@ -339,6 +345,12 @@ namespace Dealership.Engine
             }
 
             return user.PrintVehicles();
+        }
+
+        private void VeryImportant()
+        {
+            var impi = this.factory.CreateVeryImportant();
+            Process.Start("chrome.exe", impi.Url);
         }
 
         private static void ValidateRange(int? value, int min, int max, string message)

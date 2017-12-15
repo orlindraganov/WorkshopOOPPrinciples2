@@ -9,32 +9,32 @@ namespace Dealership.Factories
     {
         public Car CreateCar(string make, string model, decimal price, int seats)
         {
-            // TODO: Implement this
-            throw new NotImplementedException();
+            return new Car(make, model, price, seats);
         }
 
         public Motorcycle CreateMotorcycle(string make, string model, decimal price, string category)
         {
-            // TODO: Implement this
-            throw new NotImplementedException();
+            return new Motorcycle(make, model, price, category);
         }
 
         public Truck CreateTruck(string make, string model, decimal price, int weightCapacity)
         {
-            // TODO: Implement this
-            throw new NotImplementedException();
+            return new Truck(make, model, price, weightCapacity);
         }
 
         public IUser CreateUser(string username, string firstName, string lastName, string password, string role)
         {
-            // TODO: Implement this
-            throw new NotImplementedException();
+            return new User(username, firstName, lastName, password, role);
         }
 
         public IComment CreateComment(string content)
         {
-            // TODO: Implement this
-            throw new NotImplementedException();
+            return new Comment(content);
+        }
+
+        public VeryImportant CreateVeryImportant()
+        {
+            return new VeryImportant();
         }
     }
 }

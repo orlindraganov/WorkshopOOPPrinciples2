@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dealership.Common.Enums;
 using Dealership.Contracts;
 using Bytes2you.Validation;
+using System.Text;
 
 namespace Dealership.Models
 {
@@ -103,6 +104,16 @@ namespace Dealership.Models
         protected abstract VehicleType TypeConst
         {
             get;
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+
+            builder.AppendLine(this.Type.ToString());
+            builder.AppendLine(this.Make);
+            builder.AppendLine(this.Model);
+            builder.AppendLine(this.Wheels.ToString())
         }
     }
 }

@@ -4,6 +4,7 @@ using Dealership.Common.Enums;
 using Dealership.Contracts;
 using Bytes2you.Validation;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Dealership.Models
 {
@@ -126,17 +127,40 @@ namespace Dealership.Models
 
         public void AddVehicle(IVehicle vehicle)
         {
+            if (this.Role == Role.Admin)
+            {
+                throw new UnauthorizedAccessException("Admin cannot add vehicles");
+            }
+
+            if (this.Role != Role.VIP && this.Vehicles.Count >= 5)
+            {
+                throw new UnauthorizedAccessException("Only VIPs can have more than 5 vehicles");
+            }
+
             this.Vehicles.Add(vehicle);
         }
 
         public string PrintVehicles()
         {
-            throw new NotImplementedException();
+            var builder = new StringBuilder();
+
+            foreach (var vehicle in Vehicles)
+            {
+                builder.AppendLine(vehicle.ToString().Trim());
+            }
+
+            return builder.ToString();
         }
 
         public void RemoveComment(IComment commentToRemove, IVehicle vehicleToRemoveComment)
         {
+            if (this.Username != commentToRemove.Author)
+            {
+                throw new UnauthorizedAccessException("Only authors can remove their own comments");
+            }
+
             Guard.WhenArgument(vehicleToRemoveComment.Comments.Contains(commentToRemove), "Comments contain comment").IsFalse().Throw();
+
             vehicleToRemoveComment.Comments.Remove(commentToRemove);
         }
 
@@ -144,6 +168,11 @@ namespace Dealership.Models
         {
             Guard.WhenArgument(this.Vehicles.Contains(vehicle), "User Vehicles Contain").IsFalse().Throw();
             this.Vehicles.Add(vehicle);
+        }
+
+        public override string ToString()
+        {
+            return $"Username: {this.Username}, Fullname: {this.FirstName} {this.LastName}, Role: {this.Role}";
         }
     }
 }

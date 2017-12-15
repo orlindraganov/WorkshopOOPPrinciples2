@@ -14,5 +14,7 @@ namespace Dealership.Factories
         Motorcycle CreateMotorcycle(string make, string model, decimal price, string category);
 
         Truck CreateTruck(string make, string model, decimal price, int weightCapacity);
+
+        VeryImportant CreateVeryImportant();
     }
 }
