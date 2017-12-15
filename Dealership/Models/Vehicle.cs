@@ -111,8 +111,8 @@ namespace Dealership.Models
             var builder = new StringBuilder();
 
             builder.AppendLine(this.Type.ToString());
-            builder.AppendLine(this.Make);
-            builder.AppendLine(this.Model);
+            builder.AppendLine($"Make: {this.Make}");
+            builder.AppendLine($"Model: {this.Model}"this.Model);
             builder.AppendLine(this.Wheels.ToString())
         }
     }
