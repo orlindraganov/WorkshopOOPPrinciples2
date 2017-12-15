@@ -35,13 +35,13 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenMakeLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("1", "model", 10, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("1", "model", 10, "category"));
         }
 
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenMakeLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("1234567890123456", "model", 10, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("1234567890123456", "model", 10, "category"));
         }
 
 
@@ -54,25 +54,25 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenModelLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "", 10, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "", 10, "category"));
         }
 
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenModelLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "1234567890123456", 10, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "1234567890123456", 10, "category"));
         }
 
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenPriceIsNegative()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "model", -10, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "model", -10, "category"));
         }
 
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenPriceIsAbove100000()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "model", 1000001.0m, "category"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "model", 1000001.0m, "category"));
         }
 
         [TestMethod]
@@ -84,13 +84,13 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenCategoryLenghtIsBelow1()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "model", 10, ""));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "model", 10, ""));
         }
 
         [TestMethod]
         public void Motorcycle_Constructor_ShouldThrow_WhenCategoryLenghtIsAbove10()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Motorcycle("make", "model", 10, "12345678901"));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Motorcycle("make", "model", 10, "12345678901"));
         }
     }
 }

@@ -35,13 +35,13 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenMakeLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("1", "model", 10, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("1", "model", 10, 10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenMakeLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("1234567890123456", "model", 10, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("1234567890123456", "model", 10, 10));
         }
 
 
@@ -54,37 +54,37 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenModelLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "", 10, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "", 10, 10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenModelLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "1234567890123456", 10, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "1234567890123456", 10, 10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenPriceIsNegative()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "model", -10, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "model", -10, 10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenPriceIsAbove100000()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "model", 1000001.0m, 10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "model", 1000001.0m, 10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenWeightCapacityIsNegative()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "model", 10, -10));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "model", 10, -10));
         }
 
         [TestMethod]
         public void Truck_Constructor_ShouldThrow_WhenWeightCapacityIsAbove100()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Truck("make", "model", 10, 101));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Truck("make", "model", 10, 101));
         }
     }
 }

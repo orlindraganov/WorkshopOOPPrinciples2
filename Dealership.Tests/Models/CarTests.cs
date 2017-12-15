@@ -35,13 +35,13 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenMakeLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("1", "model", 10, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("1", "model", 10, 4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenMakeLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("1234567890123456", "model", 10, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("1234567890123456", "model", 10, 4));
         }
 
 
@@ -54,37 +54,37 @@ namespace Dealership.Tests.Models
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenModelLenghtIsBelow2()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "", 10, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "", 10, 4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenModelLenghtIsAbove15()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "1234567890123456", 10, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "1234567890123456", 10, 4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenPriceIsNegative()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "model", -10, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "model", -10, 4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenPriceIsAbove100000()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "model", 1000001.0m, 4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "model", 1000001.0m, 4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenSeatsIsNegative()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "model", 10, -4));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "model", 10, -4));
         }
 
         [TestMethod]
         public void Car_Constructor_ShouldThrow_WhenSeatsIsAbove10()
         {
-            Assert.ThrowsException<ArgumentException>(() => new Car("make", "model", 10, 11));
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Car("make", "model", 10, 11));
         }
     }
 }
